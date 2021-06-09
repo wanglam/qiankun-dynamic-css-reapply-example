@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "qiankun-dynamic-css-reapply-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "workspaces": [
+    "subapp1",
+    "subapp2",
+    "main"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "start": "npm-run-all --parallel start:**",
+    "start:subapp1": "cd subapp1 && BROWSER=none PORT=1111 npm start",
+    "start:subapp2": "cd subapp2 && BROWSER=none PORT=2222 npm start",
+    "start:main": "cd main && npm start",
+    "build:subapp1": "cd subapp1 && npm run build",
+    "build:subapp2": "cd subapp2 && npm run build",
+    "serve:subapp1": "cd subapp1 && serve build -C -p 1111",
+    "serve:subapp2": "cd subapp2 && serve build -C -p 2222",
+    "build-and-serve": "npm-run-all --parallel build:** serve:** start:main"
+  }
+}
