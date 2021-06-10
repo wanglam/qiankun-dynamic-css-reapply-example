@@ -21,6 +21,6 @@
     "build:subapp2": "cd subapp2 && npm run build",
     "serve:subapp1": "cd subapp1 && serve build -C -p 1111",
     "serve:subapp2": "cd subapp2 && serve build -C -p 2222",
-    "build-and-serve": "npm-run-all --parallel build:** serve:** start:main"
+    "build-and-serve": "npm-run-all --serial build:** && npm-run-all --parallel serve:** start:main"
   }
 }
